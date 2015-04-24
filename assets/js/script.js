@@ -1,16 +1,26 @@
 
-function makeToast(slug, emailkey) {
-  emailkey = "loukia@iplantc.org";
-  console.log("This is inside the script.js")
-  //var url = "http://localhost:8080/systems/demosys/badges/" + slug + "/instances";
-  //slug = "aeb7128764d977d86676f566f167b303"
+function makeSpaceCat() {
 
   $.post(
-    "http://localhost:8080/systems/demosys/badges/" + slug + "/instances",
-    { email: emailkey },
+    "/api/SpaceCat",
     function (data, textStatus, xhr) {
       $('#earned').fadeIn(400).delay(1500).fadeOut(400);
-      if (xhr.status == 200) {
+      if (xhr.status == 201) {
+        console.log(body)
+      }
+    },
+    "json"
+  );
+
+};
+
+function makeSpaceDog() {
+
+  $.post(
+    "/api/SpaceDog",
+    function (data, textStatus, xhr) {
+      $('#earned').fadeIn(400).delay(1500).fadeOut(400);
+      if (xhr.status == 201) {
         console.log(body)
       }
     },
@@ -20,10 +30,7 @@ function makeToast(slug, emailkey) {
 };
 
 function getBadges(){
-  console.log("here are your badges:")
-
   //var url = "http://localhost:8080/systems/demosys/"+"/instances/" + "loukia@iplantc.org";
-  //var obj =
     $.get(
       "http://localhost:8080/systems/demosys/"+"instances/" + "loukia@iplantc.org",
       function (data, textStatus, xhr) {

@@ -5,6 +5,9 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
+var actionUtil = require('sails/lib/hooks/blueprints/actionUtil');
+var request = require('request');
+
 module.exports = {
   create: function (req, res) {
     // Create data object (monolithic combination of all parameters)
