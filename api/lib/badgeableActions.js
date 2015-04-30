@@ -1,0 +1,4 @@
+module.exports = {
+  LAUNCH_SPACE_CAT: "LAUNCH_SPACE_CAT",
+  LAUNCH_SPACE_DOG: "LAUNCH_SPACE_DOG"
+}

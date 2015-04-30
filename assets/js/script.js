@@ -32,7 +32,7 @@ function makeSpaceDog() {
 function getBadges(){
   //var url = "http://localhost:8080/systems/demosys/"+"/instances/" + "loukia@iplantc.org";
     $.get(
-      "http://localhost:8080/systems/demosys/"+"instances/" + "loukia@iplantc.org",
+      "/api/UserBadges",
       function (data, textStatus, xhr) {
         $('#get-badges').fadeIn(400).delay(1500).fadeOut(400);
         if (xhr.status == 200) {
