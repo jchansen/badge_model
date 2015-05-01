@@ -63,13 +63,16 @@
                 <li class="divider"></li>
                 <li><a href="http://backpack.openbadges.org/share/9d297b7173ab24665a1fe47e5111d1ab/">Dog Badge</a></li>
 
-
-
               </ul>
 
 
             </li>
             <li><a href="#all-badges" id = "all-badges" onclick="getBadges()">All Badges</a></li>
+            <% if (user) { %>
+              <li><a href="/logout">Log Out</a></li>
+            <% } else{ %>
+              <li><a href="/login">Login</a></li>
+            <% } %>
           </ul>
         </div>
       </div>
