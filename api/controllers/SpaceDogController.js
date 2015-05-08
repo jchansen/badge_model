@@ -15,13 +15,7 @@ module.exports = {
     // Create data object (monolithic combination of all parameters)
     // Omit the blacklisted params (like JSONP callback param, etc.)
 
-    var slug = 'aeb7128764d977d86676f566f167b303';
-    var emailkey = "anna@iplantc.org";
-    var url = "http://localhost:8080/systems/demosys/badges/" + slug + "/instances";
-
     var data = actionUtil.parseValues(req);
-
-    var x = Rules;
 
     // Create new instance of model using data from params
     SpaceDog.create(data).exec(function created(err, newInstance) {
@@ -33,12 +27,7 @@ module.exports = {
 
       Rules.recordAction({
         action: badgeableActions.LAUNCH_SPACE_DOG,
-        user: req.currentUser
-        //}, function(err, badgeId){
-        //  OpenBadgesService.grantBadge({badgeId: badgeId, email: email}, function(err, response){
-        //    if(err) return console.log("Ruh-roh!");
-        //    console.log("Yay!  Badge granted.");
-        //  })
+        user: req.user.emails[0].value
       });
 
       // Send JSONP-friendly response if it's supported

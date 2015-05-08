@@ -10,7 +10,7 @@ actionBadgeMap = {
 recordAction = function(obj){
   var action = obj.action;
   var user = obj.user;
-  var url = "http://localhost:8080/systems/demosys/badges/" + slug + "/instances";
+
 
 
   // get slug by associated badge
@@ -22,15 +22,16 @@ recordAction = function(obj){
       // logic
       // first badge
       if (updatedAction.tally === 1){
-        OpenBadgesService.grantBadge({badgeId: slug[first], email: user, url: url}, function(err, response) {
+        var url = "http://localhost:8080/systems/demosys/badges/" + slug.first+ "/instances";
+        OpenBadgesService.grantBadge({badgeId: slug.first, email: user, url: url}, function(err, response) {
           if (err) return console.log("Ruh-roh!");
           console.log("Yay!  Badge granted.");
         })
       }
       // 5th badge
       if (updatedAction.tally === 5){
-
-        OpenBadgesService.grantBadge({badgeId: slug[fifth], email: user, url: url}, function(err, response) {
+        var url = "http://localhost:8080/systems/demosys/badges/" + slug.fifth + "/instances";
+        OpenBadgesService.grantBadge({badgeId: slug.fifth, email: user, url: url}, function(err, response) {
           if (err) return console.log("Ruh-roh!");
           console.log("Yay!  Badge granted.");
         })
@@ -40,29 +41,17 @@ recordAction = function(obj){
 
 
     })
-  })
-
-  //record action in database
-  // db.action ++ for user
-
-  // add user if they are not in db
-
-
-
-  // row = user; column = action
-
-
-
-
-  // generate URLs for granting
-  var url = "http://localhost:8080/systems/demosys/badges/" + slug + "/instances";
-
-
-
-  OpenBadgesService.grantBadge({badgeId: slug, email: user, url: url}, function(err, response) {
-    if (err) return console.log("Ruh-roh!");
-    console.log("Yay!  Badge granted.");
-  })
+  });
+  //
+  //// generate URLs for granting
+  //var url = "http://localhost:8080/systems/demosys/badges/" + slug + "/instances";
+  //
+  //
+  //
+  //OpenBadgesService.grantBadge({badgeId: slug, email: user, url: url}, function(err, response) {
+  //  if (err) return console.log("Ruh-roh!");
+  //  console.log("Yay!  Badge granted.");
+  //})
 };
 
 module.exports = {
